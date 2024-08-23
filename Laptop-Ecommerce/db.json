@@ -1,0 +1,70 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "hp",
+      "model": "black",
+      "price": 70000,
+      "mrp": 79000,
+      "image": "https://in-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08403046_1.png",
+      "discription": "12th Gen Intel Core i7-12650H, 4GB RTX 3050 GPU, 15.6-inch 16GB DDR4, 512GB SSD,"
+    },
+    {
+      "id": "2",
+      "title": "acer",
+      "model": "grey",
+      "price": 44000,
+      "mrp": 51990,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTusn4KMP6J52X8EiEvh8hhXGLI5zW-aDQzi29tih9cnw&s",
+      "discription": "Intel Core i7 13th Gen (Windows 11 /16 GB/512 GB SSD/4 GB Graphics/NVIDIA GeForce ) "
+    },
+    {
+      "id": "3",
+      "title": "asus",
+      "model": "black",
+      "price": 74000,
+      "mrp": 79990,
+      "image": "https://m.media-amazon.com/images/I/71c0GSxtEEL._AC_UF1000,1000_QL80_.jpg",
+      "discription": "Intel Core i9-13900H 13th Gen, 16\" (40.64 cm) (16GB/512GB SSD/Intel Iris Xe/Win 11)"
+    },
+    {
+      "id": "4",
+      "title": "lenovo",
+      "model": "blue",
+      "price": 65000,
+      "mrp": 69990,
+      "image": "https://p3-ofp.static.pub/fes/cms/2022/12/09/nrdzkecjli3cylpg2iepkrz1bvilr5894989.png",
+      "discription": "Intel Core i5 12th Gen 14\" FHD Thin and Light Laptop (16GB RAM/1TB SSD/Windows 11)"
+    },
+    {
+      "id": "5",
+      "title": "dell",
+      "model": "black",
+      "price": "41000",
+      "mrp": "49999",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vD3o_XDtpgLkJ7vKT1nOHVjbHVrr9dbW8w&s",
+      "uploadimg": "",
+      "discription": "Buy Dell Insprion 7430 Convertible Laptop (13th Gen Intel Core i5-1355U/16 GB/512 GB SSD"
+    }
+  ],
+  "users": [
+    {
+      "username": "somanath",
+      "email": "somanathkotmire8@gmail.com",
+      "password": "123456",
+      "id": "9761"
+    },
+    {
+      "id": "877f",
+      "username": "Omkar",
+      "email": "Omkarsutar5127@gmail.com",
+      "password": "456789"
+    },
+    {
+      "id": "6ee1",
+      "username": "sagar",
+      "email": "s@gmail.com",
+      "password": "789789"
+    }
+  ]
+}
