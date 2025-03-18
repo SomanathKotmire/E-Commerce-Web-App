@@ -84,13 +84,57 @@ export default function Checkout() {
         if (Object.keys(formErrObj).length > 0) {
             setFormError(formErrObj)
         } else if (selectedOption === 'online') {
+            var options = {
+                "key": "rzp_live_Ay9af2dQeUH8A6",
+                "amount": total * 100,
+                "name": "Abhijit Gatade",
+                "description": "Footwear Website Purchase",
+                "image": "https://www.abhijitgatade.com/assets/img/favicon.png",
+                "order_id": "",
+                "handler": function (response) {
+                    var event = new CustomEvent("payment.success",
+                        {
+                            detail: response,
+                            bubbles: true,
+                            cancelable: true
+                        }
+                    );
+                    window.dispatchEvent(event);
+                },
+                "prefill": {
+                    "name": "",
+                    "email": "",
+                    "contact": ""
+                },
+                "notes": {
+                    "address": ""
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new window.Razorpay(options);
+            rzp1.open();
         alert("Order is Placed");
-
         } else if(selectedOption === 'offline') {
             console.log(data);
             alert("Order is Placed");
-
+            
         }
+
+        setFormData(
+            {
+                firstname: "",
+                lastname: "",
+                mobile: "",
+                email: "",
+                address: "",
+                city: "",
+                state: "",
+                pincode: ""
+        
+            }
+        );
     }
 
     function handleChange(e) {
@@ -113,12 +157,12 @@ export default function Checkout() {
         <div>
             <Header/>
             <div className="container-fluid mt-2 ">
-            <div className='text-end mx-4'>
+            {/* <div className='text-end mx-4'>
               <button onClick={()=> navigate(-1)} className='btn btn-danger'>Back</button>
-            </div>
+            </div> */}
                 <div className="row mt-3">
                     <div className="col-lg-8 ">
-                        <div className='border ps-2 pe-2'>
+                        <div className='border ps-2 pe-2 mt-4'>
                             <table class="bill-table table  text-center mt-2 ">
                                 <thead>
                                     <tr>
@@ -156,55 +200,43 @@ export default function Checkout() {
                             </table>
                         </div>
                     </div>
-                    <div className="col-lg-4">
-                        <div class="card checkoutbox">
-                            <div class="card-body mx-4">
-                                <div class="container">
-                                    <p class="" style={{ fontSize: "20px", color: "black" }}>Thank for your purchase</p>
-                                    <div className='text-left'>
-                                        <div class="row">
-                                            <hr />
-                                            <div class="col-xl-9">
-                                                <p>Subtotal:</p>
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <p class="float-end">₹ {subTotalCartPrice}
-                                                </p>
-                                            </div>
-                                            {/* <hr/> */}
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-9">
-                                                <p>Delivery:</p>
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <p class="float-end">₹ {deliveryCharges}
-                                                </p>
-                                            </div>
-                                            {/* <hr/> */}
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-9">
-                                                <p>Discount:</p>
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <p class="float-end">₹ {discount}
-                                                </p>
-                                            </div>
-                                            <hr style={{ border: "2px solid black" }} />
-                                        </div>
-                                        <div class="row text-black">
-                                            <div class="col-xl-12">
-                                                <p class="float-end fw-bold">Total : ₹  {total} /-
-                                                </p>
-                                            </div>
-                                            <hr style={{ border: "2px solid black" }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
+
+<div className="col-lg-4">
+    <div className="card checkoutbox shadow-sm border-1">
+        <div className="card-body px-4 py-4">
+            <div className="container">
+                <p className="fw-bold text-dark fs-5 text-center">Thank You for Your Purchase!</p>
+                <hr className="mb-3" />
+
+                <div className="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span className="fw-bold">₹ {subTotalCartPrice}</span>
+                </div>
+
+                <div className="d-flex justify-content-between">
+                    <span>Delivery:</span>
+                    <span className="fw-bold text-success">₹ {deliveryCharges}</span>
+                </div>
+
+                <div className="d-flex justify-content-between">
+                    <span>Discount:</span>
+                    <span className="fw-bold text-danger">- ₹ {discount}</span>
+                </div>
+
+                <hr className="my-3" style={{ border: "2px solid black" }} />
+
+                <div className="d-flex justify-content-between text-black">
+                    <span className="fw-bold fs-5">Total:</span>
+                    <span className="fw-bold fs-5 text-primary">₹ {total} /-</span>
+                </div>
+
+                <hr className="my-3" style={{ border: "2px solid black" }} />
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
                 <div>
                     <div className='py-4'>
@@ -220,7 +252,7 @@ export default function Checkout() {
                                                 <div className="col-lg-6">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">First Name</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='firstname' name='firstname' className='form-control' />
+                                                        <input value={formData.firstname} onChange={(e) => handleChange(e)} type="text" id='firstname' name='firstname' className='form-control' />
 
                                                         {formError.firstnameError && <span className='text-danger'>{formError.firstnameError}</span>}
                                                     </div>
@@ -228,55 +260,55 @@ export default function Checkout() {
                                                 <div className="col-lg-6">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">Last Name</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='lastname' name='lastname' className='form-control' />
+                                                        <input value={formData.lastname} onChange={(e) => handleChange(e)} type="text" id='lastname' name='lastname' className='form-control' />
                                                         {formError.lastnameError && <span className='text-danger'>{formError.lastnameError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">Mobile Number</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='mobile' name='mobile' className='form-control' />
+                                                        <input value={formData.mobile} onChange={(e) => handleChange(e)} type="text" id='mobile' name='mobile' className='form-control' />
                                                         {formError.mobileError && <span className='text-danger'>{formError.mobileError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">Email Address</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='email' name='email' className='form-control' />
+                                                        <input value={formData.email} onChange={(e) => handleChange(e)} type="text" id='email' name='email' className='form-control' />
                                                         {formError.emailError && <span className='text-danger'>{formError.emailError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-12">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">Full Address</label>
-                                                        <textarea onChange={(e) => handleChange(e)} name="address" id='address' rows="3" className='form-control'></textarea>
+                                                        <textarea value={formData.address} onChange={(e) => handleChange(e)} name="address" id='address' rows="3" className='form-control'></textarea>
                                                         {formError.addressError && <span className='text-danger'>{formError.addressError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">City</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='city' name='city' className='form-control' />
+                                                        <input value={formData.city} onChange={(e) => handleChange(e)} type="text" id='city' name='city' className='form-control' />
                                                         {formError.cityError && <span className='text-danger'>{formError.cityError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">State</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='state' name='state' className='form-control' />
+                                                        <input value={formData.state} onChange={(e) => handleChange(e)} type="text" id='state' name='state' className='form-control' />
                                                         {formError.stateError && <span className='text-danger'>{formError.stateError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <div className="form-group mb-3">
                                                         <label htmlFor="">Pin Code</label>
-                                                        <input onChange={(e) => handleChange(e)} type="text" id='pincode' name='pincode' className='form-control' />
+                                                        <input value={formData.pincode} onChange={(e) => handleChange(e)} type="text" id='pincode' name='pincode' className='form-control' />
                                                         {formError.pincodeError && <span className='text-danger'>{formError.pincodeError}</span>}
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-12">
-                                                    <div className="form-group mb-3 text-center">
-                                                        <div class="form-check form-check-inline fw-bold">
+                                                    <div className="form-group mb-3 text-center d-flex align-items-center justify-content-center">
+                                                        <div class="form-check form-check-inline fw-bold ">
                                                             <input
                                                                 type="radio"
                                                                 id="offline"
@@ -285,7 +317,7 @@ export default function Checkout() {
                                                                 checked={selectedOption === 'offline'}
                                                                 onChange={handleOptionChange}
                                                             />
-                                                            <label class="form-check-label" for="inlineRadio1">Cash On Delivery</label>
+                                                            <label class="form-check-label ms-1" for="inlineRadio1"> Cash On Delivery</label>
                                                         </div>
                                                         <div class="form-check form-check-inline fw-bold">
                                                             <input
@@ -296,7 +328,7 @@ export default function Checkout() {
                                                                 checked={selectedOption === 'online'}
                                                                 onChange={handleOptionChange}
                                                             />
-                                                            <label class="form-check-label" for="inlineRadio2">Online</label>
+                                                            <label class="form-check-label ms-1" for="inlineRadio2"> Online</label>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -136,8 +136,9 @@ export default function Addproducts() {
 
         <label className='text' style={{ fontSize: "20px" }} htmlFor="">Discription</label>
         <textarea id="discription" value={data.discription} onChange={(e)=>handleChange(e)} className='form-control' name="" cols="10" rows="10"></textarea><br />
+        
         <button onClick={(e)=>handleSubmit(e)} className='btn btn-primary'>Submit</button>
-      </div>s
+      </div>
     </div>
   )
 }

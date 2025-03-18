@@ -78,13 +78,13 @@ export default function Contact() {
 								<p><span><i className="fa-solid fa-location-dot"></i></span> 4th Lane, E Ward, Shahupuri, <br /> Kolhapur, Maharashtra 416001.</p>
 							</div>
 							<div className="col-md-3">
-								<p><span><i className="fa-solid fa-phone"></i></span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+								<p><span><i className="fa-solid fa-phone"></i></span> <a href="tel://1234567920">+91 1234567890</a></p>
 							</div>
 							<div className="col-md-3">
-								<p><span><i className="fa-regular fa-paper-plane"></i></span> <a href="mailto:info@myfootwear.com">info@myfootwear.com</a></p>
+								<p><span><i className="fa-regular fa-paper-plane"></i></span> <a href="mailto:info@laptopsolutions.com">info@laptopsolutions.com</a></p>
 							</div>
 							<div className="col-md-3">
-								<p><span><i className="fa-solid fa-globe"></i></span> <a href="#">myfootwear.com</a></p>
+								<p><span><i className="fa-solid fa-globe"></i></span> <a href="#">laptopsolutions.com</a></p>
 							</div>
 						</div>
 					</div>
